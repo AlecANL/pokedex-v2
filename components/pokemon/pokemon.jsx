@@ -4,17 +4,31 @@ import styled from 'styled-components';
 
 const PokemonStyled = styled.div`
   text-align: center;
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 150px 2fr 1fr;
+    min-block-size: 100vh;
+  }
 `;
 
 const PokemonDescription = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* outline: 1px solid red; */
   text-align: start;
   padding-block: 1.5rem;
+
   .heading {
     grid-column: span 3;
+    @media screen and (min-width: 768px) {
+      span {
+        font-weight: bold;
+        font-size: 1.25;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+    }
   }
   .region {
     position: absolute;
@@ -24,13 +38,59 @@ const PokemonDescription = styled.div`
     p {
       margin: 0;
     }
+    @media screen and (min-width: 768px) {
+      inset-block-end: 4rem;
+      font-size: 1.1rem;
+    }
   }
   .details {
     padding-block: 1.5rem;
     grid-column: 2 / span 2;
+    @media screen and (min-width: 768px) {
+      font-size: 1.1rem;
+    }
   }
+
   h1 {
     margin: 0;
+  }
+`;
+
+const PokemonImageStyled = styled.div`
+  img {
+    inline-size: 200px;
+    block-size: 200px;
+  }
+  @media screen and (min-width: 768px) {
+    align-self: center;
+    img {
+      inline-size: 400px;
+      block-size: 400px;
+      -webkit-user-drag: none;
+    }
+  }
+`;
+
+const PokemonStatsStyled = styled.div`
+  @media screen and (min-width: 768px) {
+    align-self: center;
+  }
+`;
+
+const ShadowPokeNameStyled = styled.p`
+  margin: 0;
+  position: absolute;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.67);
+  opacity: 0.5;
+  font-size: 4.5rem;
+  inset-block-start: 3rem;
+  inset-inline-start: 0rem;
+  @media screen and (min-width: 768px) {
+    font-size: 15rem;
+    inset-block-start: 0rem;
+    z-index: 10;
+    inset-inline-start: -1rem;
   }
 `;
 
@@ -59,17 +119,18 @@ function Pokemon() {
           </p>
         </div>
       </PokemonDescription>
-      <div className="pokemon-image">
+      <PokemonImageStyled>
+        <ShadowPokeNameStyled>Blastoise</ShadowPokeNameStyled>
         <Image
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
           alt="blastoise pokemon"
-          width={200}
-          height={200}
+          width={400}
+          height={400}
         />
-      </div>
-      <div className="pokemon-stats">
+      </PokemonImageStyled>
+      <PokemonStatsStyled>
         <PokemonStat />
-      </div>
+      </PokemonStatsStyled>
     </PokemonStyled>
   );
 }

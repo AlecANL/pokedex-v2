@@ -2,13 +2,14 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import Pokemon from '../components/pokemon/pokemon';
 
-const HeadingStyled = styled.h2`
-  color: red;
-`;
-
 const MainStyled = styled.main`
-  max-inline-size: 1100px;
+  max-inline-size: 1400px;
+  min-block-size: 100vh;
   margin: auto;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export default function Home() {

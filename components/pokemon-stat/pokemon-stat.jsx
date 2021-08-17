@@ -6,6 +6,7 @@ const StatsStyled = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
   p {
     margin: 0;
     padding: 0.5rem;
@@ -16,11 +17,24 @@ const StatsStyled = styled.div`
   span {
     display: inline-block;
   }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-start;
+  }
+`;
+
+const StatsContainerStyled = styled.div`
+  h2 {
+    font-size: 2.5rem;
+  }
+  @media screen and (min-width: 768px) {
+    text-align: start;
+  }
 `;
 
 function PokemonStat() {
   return (
-    <div>
+    <StatsContainerStyled>
       <div className="icon-type"></div>
       <h2>Base stats:</h2>
       <StatsStyled>
@@ -49,7 +63,7 @@ function PokemonStat() {
           <span>78</span>
         </p>
       </StatsStyled>
-    </div>
+    </StatsContainerStyled>
   );
 }
 
